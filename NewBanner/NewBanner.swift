@@ -9,7 +9,7 @@ import Foundation
 import UIKit
  
 
-public class BannerSlidderPod: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource
+public class NewBanner: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource
 {
     var images : [UIImageView] = []
     var maincollection : UICollectionView!
