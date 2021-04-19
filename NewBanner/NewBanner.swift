@@ -11,16 +11,16 @@ import UIKit
 
 public class NewBanner: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource
 {
-    var images : [UIImageView] = []
+    var images = ["download1" ,"download2","download3","download4","download5"]
     var maincollection : UICollectionView!
 
     public func execute() {
         print("executed")
     }
     
-    public func ImageSlide(collection : UICollectionView , image : [UIImageView])
+    public func ImageSlide(collection : UICollectionView , image : [UIImageView]?)
     {
-        images=image
+        //images=image
         maincollection = collection
         maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
         collection.delegate = self

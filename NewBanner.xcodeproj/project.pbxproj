@@ -12,6 +12,7 @@
 		CF9789EA262DBF6000B68262 /* NewBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9789DC262DBF6000B68262 /* NewBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF9789F6262DBF7400B68262 /* NewBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9789F5262DBF7400B68262 /* NewBanner.swift */; };
 		CF9789FA262DBF9800B68262 /* NewBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9789F9262DBF9800B68262 /* NewBannerCell.swift */; };
+		CF978A14262DD07800B68262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF978A13262DD07800B68262 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		CF9789E9262DBF6000B68262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF9789F5262DBF7400B68262 /* NewBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBanner.swift; sourceTree = "<group>"; };
 		CF9789F9262DBF9800B68262 /* NewBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBannerCell.swift; sourceTree = "<group>"; };
+		CF978A13262DD07800B68262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				CF9789DD262DBF6000B68262 /* Info.plist */,
 				CF9789F5262DBF7400B68262 /* NewBanner.swift */,
 				CF9789F9262DBF9800B68262 /* NewBannerCell.swift */,
+				CF978A13262DD07800B68262 /* Assets.xcassets */,
 			);
 			path = NewBanner;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF978A14262DD07800B68262 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
