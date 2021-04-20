@@ -9,13 +9,14 @@ import Foundation
 import UIKit
  
 
-public class NewBanner: UIViewController   ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout
+public class NewBanner: UIViewController ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout
 {
     
     
     var images = ["download1" ,"download2","download3","download4","download5"]
    
     var views : UIView!
+    var contrl : UIViewController!
     
     public lazy var maincollection : UICollectionView =
         {
@@ -30,7 +31,7 @@ public class NewBanner: UIViewController   ,UICollectionViewDelegate , UICollect
             
             maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
             maincollection.backgroundColor = .red
-            maincollection.delegate =  self
+           
             
             return maincollection
         }()
@@ -43,16 +44,18 @@ public class NewBanner: UIViewController   ,UICollectionViewDelegate , UICollect
         print("executed")
     }
     
-    public func ImageSlide(myview : UIView)
+    public func ImageSlide(myview : UIView ,controlle:UIViewController )
     {
-        
+         
         views = myview
         views.addSubview(maincollection)
         maincollection.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
         maincollection.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
         maincollection.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
         maincollection.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
-             
+        maincollection.delegate = (controlle as! UICollectionViewDelegate)
+        maincollection.dataSource = (controlle as! UICollectionViewDataSource)
+        
     }
     
     public func singleimage(myview : UIView)

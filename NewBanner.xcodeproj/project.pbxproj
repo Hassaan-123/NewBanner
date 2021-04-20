@@ -33,6 +33,7 @@
 		18AE000F1BAAB25AD7F88FBA /* Pods-NewBanner-NewBannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewBanner-NewBannerTests.release.xcconfig"; path = "Target Support Files/Pods-NewBanner-NewBannerTests/Pods-NewBanner-NewBannerTests.release.xcconfig"; sourceTree = "<group>"; };
 		47A3714786F9F6A6B47D16E4 /* Pods-NewBanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewBanner.release.xcconfig"; path = "Target Support Files/Pods-NewBanner/Pods-NewBanner.release.xcconfig"; sourceTree = "<group>"; };
 		CF63AEB7262EE42C008EEE1D /* NewSlidderDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSlidderDataSource.swift; sourceTree = "<group>"; };
+		CF63AEC2262F004D008EEE1D /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9789D9262DBF6000B68262 /* NewBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NewBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9789DC262DBF6000B68262 /* NewBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewBanner.h; sourceTree = "<group>"; };
 		CF9789DD262DBF6000B68262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +49,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CF63AEBF262F004D008EEE1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF9789D6262DBF6000B68262 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,6 +103,7 @@
 			children = (
 				CF9789D9262DBF6000B68262 /* NewBanner.framework */,
 				CF9789E2262DBF6000B68262 /* NewBannerTests.xctest */,
+				CF63AEC2262F004D008EEE1D /* example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +153,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CF63AEC1262F004D008EEE1D /* example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF63AED5262F0051008EEE1D /* Build configuration list for PBXNativeTarget "example" */;
+			buildPhases = (
+				CF63AEBE262F004D008EEE1D /* Sources */,
+				CF63AEBF262F004D008EEE1D /* Frameworks */,
+				CF63AEC0262F004D008EEE1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = example;
+			productName = example;
+			productReference = CF63AEC2262F004D008EEE1D /* example.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CF9789D8262DBF6000B68262 /* NewBanner */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF9789ED262DBF6000B68262 /* Build configuration list for PBXNativeTarget "NewBanner" */;
@@ -192,6 +218,9 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					CF63AEC1262F004D008EEE1D = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					CF9789D8262DBF6000B68262 = {
 						CreatedOnToolsVersion = 12.4;
 						LastSwiftMigration = 1240;
@@ -216,11 +245,19 @@
 			targets = (
 				CF9789D8262DBF6000B68262 /* NewBanner */,
 				CF9789E1262DBF6000B68262 /* NewBannerTests */,
+				CF63AEC1262F004D008EEE1D /* example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CF63AEC0262F004D008EEE1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF9789D7262DBF6000B68262 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -303,6 +340,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CF63AEBE262F004D008EEE1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF9789D5262DBF6000B68262 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,6 +376,44 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		CF63AED3262F0050008EEE1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FV6LSDGT2M;
+				INFOPLIST_FILE = example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.new.app.example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF63AED4262F0050008EEE1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FV6LSDGT2M;
+				INFOPLIST_FILE = example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.new.app.example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CF9789EB262DBF6000B68262 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -550,6 +632,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CF63AED5262F0051008EEE1D /* Build configuration list for PBXNativeTarget "example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF63AED3262F0050008EEE1D /* Debug */,
+				CF63AED4262F0050008EEE1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CF9789D3262DBF6000B68262 /* Build configuration list for PBXProject "NewBanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
