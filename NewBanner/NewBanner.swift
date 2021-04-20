@@ -9,7 +9,7 @@ import Foundation
 import UIKit
  
 
-public class NewBanner: UIViewController ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout
+public class NewBanner: UIViewController 
 {
     
     
@@ -36,9 +36,9 @@ public class NewBanner: UIViewController ,UICollectionViewDelegate , UICollectio
             return maincollection
         }()
     
-    private var NewSlidderDataSource: NewSlidderDataSource? {
-        return maincollection.dataSource as? NewSlidderDataSource
-    }
+//    private var NewSlidderDataSource: NewSlidderDataSource? {
+//        return maincollection.dataSource as? NewSlidderDataSource
+//    }
 
     public func execute() {
         print("executed")
@@ -73,4 +73,19 @@ public class NewBanner: UIViewController ,UICollectionViewDelegate , UICollectio
  
   
     
+}
+extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView,
+                      numberOfItemsInSection section: Int) -> Int {
+    return images.count
+  }
+  
+    public func collectionView(_ collectionView: UICollectionView,
+                      cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("inside newbanner")
+    let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
+        cell.Setimages(img: images[indexPath.row])
+    return cell
+    
+  }
 }

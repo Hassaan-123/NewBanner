@@ -14,7 +14,8 @@ public class NewBannerCell: UICollectionViewCell {
         print("inside cell for item at")
          
         let img = UIImageView()
-         addSubview(img)
+        img.contentMode = .scaleToFill
+        addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints=false
         img.topAnchor.constraint(equalTo: topAnchor).isActive=true
         img.leadingAnchor.constraint(equalTo:  leadingAnchor).isActive=true

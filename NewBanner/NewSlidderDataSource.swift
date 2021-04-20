@@ -18,25 +18,15 @@ class NewSlidderDataSource: NSObject
       guard let cell = collect.dequeueReusableCell(
         withReuseIdentifier: "Collections", for: indexPath) as? NewBannerCell else {
           return UICollectionViewCell()
+        
       }
         configureScoopCell(cell: cell, atIndexPath: indexPath)
         return cell
 }
     private func configureScoopCell(cell: NewBannerCell, atIndexPath indexPath: IndexPath) {
       let flavor = images[indexPath.row]
-        cell.Setimages(img: flavor)
+        
     }
     
 }
-extension NewSlidderDataSource: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView,
-                      numberOfItemsInSection section: Int) -> Int {
-    return images.count
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    return imagesCellAtIndexPath(indexPath: indexPath)
-  }
-}
+
