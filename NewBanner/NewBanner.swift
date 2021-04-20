@@ -27,7 +27,7 @@ public class NewBanner: UIViewController
             maincollection.allowsMultipleSelection = true
             
             maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
-            maincollection.backgroundColor = .white
+            maincollection.backgroundColor = .red
             return maincollection
         }()
 
@@ -48,6 +48,14 @@ public class NewBanner: UIViewController
         maincollection.delegate = self
         maincollection.dataSource = self
         
+        let img = UIImageView()
+        views.addSubview(img)
+        img.translatesAutoresizingMaskIntoConstraints=false
+        img.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
+        img.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
+        img.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
+        img.heightAnchor.constraint(equalToConstant: 100).isActive=true
+        img.image = UIImage(named: "download1")
     }
     
 }
