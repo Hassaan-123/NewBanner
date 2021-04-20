@@ -21,7 +21,7 @@ public class NewBanner: UIViewController ,UICollectionViewDataSource ,UICollecti
             layout.scrollDirection = .horizontal.self
             
            
-            let maincollection = UICollectionView(frame: views.frame, collectionViewLayout: layout)
+            let maincollection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
             maincollection.translatesAutoresizingMaskIntoConstraints=false
             maincollection.isMultipleTouchEnabled = true
             maincollection.allowsMultipleSelection = true
@@ -39,13 +39,13 @@ public class NewBanner: UIViewController ,UICollectionViewDataSource ,UICollecti
     {
         
         views = myview
-        views.addSubview(maincollection) 
+        views.addSubview(maincollection)
         maincollection.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
         maincollection.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
         maincollection.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
         maincollection.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
          
-        maincollection.delegate = self
+        maincollection.delegate =  self
         maincollection.dataSource = self
         
        
