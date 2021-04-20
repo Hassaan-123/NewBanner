@@ -12,33 +12,31 @@ import UIKit
 public class NewBanner: UIViewController
 {
     var images = ["download1" ,"download2","download3","download4","download5"]
-    var maincollection : UICollectionView!
+    var maincollection = UICollectionView()
     var views : UIView!
 
     public func execute() {
         print("executed")
     }
     
-    public func ImageSlide(collection : UICollectionView , myview : UIView)
+    public func ImageSlide(myview : UIView)
     {
         
         views = myview
-        maincollection = collection
-        maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
         
-        let img = UIImageView()
-        views.addSubview(img)
-        img.translatesAutoresizingMaskIntoConstraints=false
-        img.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
-        img.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
-        img.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
-        img.heightAnchor.constraint(equalToConstant: 250).isActive=true
-        img.image = UIImage(named: "download1")
-        collection.delegate = self
-        collection.dataSource = self
+        views.addSubview(maincollection)
+        maincollection.translatesAutoresizingMaskIntoConstraints=false
+        maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
+        maincollection.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
+        maincollection.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
+        maincollection.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
+        maincollection.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
+         
+        maincollection.delegate = self
+        maincollection.dataSource = self
         
     }
-  
+    
 }
 
 extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate
@@ -49,14 +47,7 @@ extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
-        let img = UIImageView()
-        views.addSubview(img)
-        img.translatesAutoresizingMaskIntoConstraints=false
-        img.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
-        img.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
-        img.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
-        img.heightAnchor.constraint(equalToConstant: 250).isActive=true
-        img.image = UIImage(named: "\(images[indexPath.row])")
+        cell.image = images[indexPath.row]
         return cell
     }
 }
