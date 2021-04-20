@@ -12,8 +12,24 @@ import UIKit
 public class NewBanner: UIViewController
 {
     var images = ["download1" ,"download2","download3","download4","download5"]
-    var maincollection = UICollectionView()
+   
     var views : UIView!
+    
+    public lazy var maincollection : UICollectionView =
+        {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal.self
+            
+           
+            let maincollection = UICollectionView(frame: views.frame, collectionViewLayout: layout)
+            maincollection.translatesAutoresizingMaskIntoConstraints=false
+            maincollection.isMultipleTouchEnabled = true
+            maincollection.allowsMultipleSelection = true
+            
+            maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
+            maincollection.backgroundColor = .white
+            return maincollection
+        }()
 
     public func execute() {
         print("executed")
@@ -23,10 +39,7 @@ public class NewBanner: UIViewController
     {
         
         views = myview
-        
-        views.addSubview(maincollection)
-        maincollection.translatesAutoresizingMaskIntoConstraints=false
-        maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
+        views.addSubview(maincollection) 
         maincollection.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
         maincollection.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
         maincollection.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
