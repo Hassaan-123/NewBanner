@@ -25,6 +25,15 @@ public class NewBanner: UIViewController
         views = myview
         maincollection = collection
         maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
+        
+        let img = UIImageView()
+        views.addSubview(img)
+        img.translatesAutoresizingMaskIntoConstraints=false
+        img.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
+        img.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
+        img.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
+        img.heightAnchor.constraint(equalToConstant: 250).isActive=true
+        img.image = UIImage(named: "download1")
         collection.delegate = self
         collection.dataSource = self
         
@@ -41,7 +50,7 @@ extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
         let img = UIImageView()
-        view.addSubview(img)
+        views.addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints=false
         img.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
         img.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
