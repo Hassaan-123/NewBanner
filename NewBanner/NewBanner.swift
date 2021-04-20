@@ -9,26 +9,31 @@ import Foundation
 import UIKit
  
 
-public class NewBanner: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource
+public class NewBanner: UIViewController
 {
     var images = ["download1" ,"download2","download3","download4","download5"]
     var maincollection : UICollectionView!
+    var views : UIView!
 
     public func execute() {
         print("executed")
     }
     
-    public func ImageSlide(collection : UICollectionView , image : [UIImageView]?)
+    public func ImageSlide(collection : UICollectionView , myview : UIView)
     {
-        //images=image
+        
+        views = myview
         maincollection = collection
         maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
         collection.delegate = self
         collection.dataSource = self
         
-        
     }
-    
+  
+}
+
+extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate
+{
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
@@ -38,12 +43,11 @@ public class NewBanner: UIViewController , UICollectionViewDelegate, UICollectio
         let img = UIImageView()
         view.addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints=false
-        img.topAnchor.constraint(equalTo: view.topAnchor).isActive=true
-        img.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive=true
-        img.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive=true
+        img.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
+        img.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
+        img.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
         img.heightAnchor.constraint(equalToConstant: 250).isActive=true
         img.image = UIImage(named: "\(images[indexPath.row])")
         return cell
     }
 }
-
