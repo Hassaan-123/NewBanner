@@ -9,7 +9,7 @@ import Foundation
 import UIKit
  
 
-public class NewBanner: UIViewController
+public class NewBanner: UIViewController ,UICollectionViewDataSource ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout
 {
     var images = ["download1" ,"download2","download3","download4","download5"]
    
@@ -63,10 +63,7 @@ public class NewBanner: UIViewController
         img.image = UIImage(named: "download1")
     }
     
-}
-
-extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout
-{
+ 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
@@ -74,6 +71,7 @@ extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate , UIC
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
         //cell.image = images[indexPath.row]
+        print("inside cell for item at")
         cell.backgroundColor = .yellow
         let img = UIImageView()
         cell.addSubview(img)
@@ -83,11 +81,12 @@ extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate , UIC
         img.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive=true
         img.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive=true
         img.image = UIImage(named: images[indexPath.row])
+        print("going out of cell for row at")
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: views.frame.width, height: views.frame.height)
+        CGSize(width: 300, height: 150)
     }
     
 }
