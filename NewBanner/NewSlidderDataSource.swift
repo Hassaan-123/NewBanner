@@ -24,7 +24,7 @@ class NewSlidderDataSource: NSObject
         return cell
 }
     private func configureScoopCell(cell: NewBannerCell, atIndexPath indexPath: IndexPath) {
-      let flavor = images[indexPath.row]
+     
         
     }
     
