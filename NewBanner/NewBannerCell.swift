@@ -12,7 +12,7 @@ public class NewBannerCell: UICollectionViewCell {
     func Setimages(img : String)
     {
         print("inside cell for item at")
-         backgroundColor = .yellow
+         
         let img = UIImageView()
          addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints=false

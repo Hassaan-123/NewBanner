@@ -16,7 +16,7 @@ class NewSlidderDataSource: NSObject
     private func imagesCellAtIndexPath(indexPath: IndexPath) -> UICollectionViewCell {
       
       guard let cell = collect.dequeueReusableCell(
-        withReuseIdentifier: "", for: indexPath) as? NewBannerCell else {
+        withReuseIdentifier: "Collections", for: indexPath) as? NewBannerCell else {
           return UICollectionViewCell()
       }
         configureScoopCell(cell: cell, atIndexPath: indexPath)

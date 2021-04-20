@@ -28,7 +28,7 @@ public class NewBanner: UIViewController ,UICollectionViewDelegate , UICollectio
             maincollection.translatesAutoresizingMaskIntoConstraints=false
             maincollection.isMultipleTouchEnabled = true
             maincollection.allowsMultipleSelection = true
-            
+            maincollection.backgroundColor = .white
             maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
            
            
