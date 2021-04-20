@@ -8,11 +8,20 @@
 import UIKit
 
 public class NewBannerCell: UICollectionViewCell {
-     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        
-     
-    }
     
+    func Setimages(img : String)
+    {
+        print("inside cell for item at")
+         backgroundColor = .yellow
+        let img = UIImageView()
+         addSubview(img)
+        img.translatesAutoresizingMaskIntoConstraints=false
+        img.topAnchor.constraint(equalTo: topAnchor).isActive=true
+        img.leadingAnchor.constraint(equalTo:  leadingAnchor).isActive=true
+        img.trailingAnchor.constraint(equalTo: trailingAnchor).isActive=true
+        img.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+        img.image = UIImage(named: "\(img)")
+        print("going out of cell for row at")
+        
+    }
 }
