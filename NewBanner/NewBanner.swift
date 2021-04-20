@@ -65,7 +65,7 @@ public class NewBanner: UIViewController
     
 }
 
-extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate
+extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate , UICollectionViewDelegateFlowLayout
 {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
@@ -74,6 +74,7 @@ extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
         //cell.image = images[indexPath.row]
+        cell.backgroundColor = .yellow
         let img = UIImageView()
         cell.addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints=false
@@ -84,4 +85,9 @@ extension NewBanner : UICollectionViewDataSource ,UICollectionViewDelegate
         img.image = UIImage(named: images[indexPath.row])
         return cell
     }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: views.frame.width, height: views.frame.height)
+    }
+    
 }
