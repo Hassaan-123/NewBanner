@@ -30,7 +30,7 @@ public class NewBanner: UIViewController ,UICollectionViewDelegate , UICollectio
             maincollection.allowsMultipleSelection = true
             
             maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
-            maincollection.backgroundColor = .red
+           
            
             
             return maincollection
