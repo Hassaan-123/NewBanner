@@ -41,12 +41,11 @@ import UIKit
     }
     var cellnumber = 0
     
-    @IBInspectable open var numberOfCell : Int = 1 {
+    @IBInspectable open var numberOfCell : Int   {
         
-        didSet{
-        cellnumber = oldValue
+        set{ cellnumber = newValue}
+        get{ return  2 }
         
-        }
     }
     
     @IBInspectable open var imagecolor : UIColor = .white
@@ -54,6 +53,13 @@ import UIKit
         didSet{
             maincollection.backgroundColor = oldValue
     }}
+    
+    @IBInspectable open var backgroundcolor : UIColor
+    {
+        set{ self.backgroundcolor = newValue}
+        get{ return  .clear }
+        
+    }
     
     @IBInspectable open var cornerradius : CGFloat = 0
     {
@@ -80,24 +86,29 @@ import UIKit
     override init(frame: CGRect) {
          super.init(frame: frame)
         
-        singleimage(myview: self)
+        ImageSlide(myview: self)
      }
      
     required public init?(coder aDecoder: NSCoder) {
          super.init(coder: aDecoder)
          
-        singleimage(myview: self)
+        ImageSlide(myview: self)
      }
     
-    public func ImageSlide(myview : UIView)
+    private func commonInit() {
+        
+        let bundle = Bundle(for: NewBanner.self)
+        bundle.loadNibNamed(String(describing: NewBanner.self), owner: self, options: nil)
+    }
+    public func ImageSlide(myview : UIView )
     {
          
         views = myview
-        views.addSubview(maincollection)
-        maincollection.topAnchor.constraint(equalTo: views.topAnchor).isActive=true
-        maincollection.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
-        maincollection.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
-        maincollection.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
+        self.addSubview(maincollection)
+        maincollection.topAnchor.constraint(equalTo: self.topAnchor).isActive=true
+        maincollection.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive=true
+        maincollection.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive=true
+        maincollection.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive=true
         maincollection.delegate = self
         maincollection.dataSource = self
         
@@ -123,15 +134,21 @@ import UIKit
 extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
                       numberOfItemsInSection section: Int) -> Int {
-    return images.count + cellnumber
+    return  cellnumber
   }
   
     public func collectionView(_ collectionView: UICollectionView,
                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("inside newbanner")
     let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
+        
+        cell.myview = self
         cell.Setimages(img: images[indexPath.row])
+        
     return cell
     
   }
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width, height: self.frame.height)
+    }
 }

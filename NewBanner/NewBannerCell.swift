@@ -9,20 +9,19 @@ import UIKit
 
 public class NewBannerCell: UICollectionViewCell {
     
-    
-    
+    var myview : UIView!
     func Setimages(img : String)
     {
         print("inside cell for item at")
          
         let img = UIImageView()
         img.contentMode = .scaleToFill
-        addSubview(img)
+        contentView.addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints=false
-        img.topAnchor.constraint(equalTo: topAnchor).isActive=true
-        img.leadingAnchor.constraint(equalTo:  leadingAnchor).isActive=true
-        img.trailingAnchor.constraint(equalTo: trailingAnchor).isActive=true
-        img.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+        img.topAnchor.constraint(equalTo:  contentView.topAnchor).isActive=true
+        img.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor).isActive=true
+        img.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor).isActive=true
+        img.bottomAnchor.constraint(equalTo:  contentView.bottomAnchor).isActive=true
         img.image = UIImage(named: "\(img)")
         print("going out of cell for row at")
         
