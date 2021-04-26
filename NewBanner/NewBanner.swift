@@ -54,7 +54,7 @@ import UIKit
             maincollection.backgroundColor = oldValue
     }}
     
-    @IBInspectable open var backgroundcolor : UIColor
+    @IBInspectable open var backgroundcolor : UIColor = .clear
     {
         didSet{ self.backgroundcolor = oldValue}
          
