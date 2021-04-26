@@ -106,11 +106,12 @@ import UIKit
     public func singleimage(myview : UIView)
     {
         let img = UIImageView()
-        myview.addSubview(img)
+        self.addSubview(img)
+      //  myview.addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints=false
-        img.bottomAnchor.constraint(equalTo: myview.bottomAnchor).isActive=true
-        img.leadingAnchor.constraint(equalTo: myview.leadingAnchor).isActive=true
-        img.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
+        img.bottomAnchor.constraint(equalTo:  self.bottomAnchor).isActive=true
+        img.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive=true
+        img.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive=true
         img.heightAnchor.constraint(equalToConstant: 100).isActive=true
         img.image = UIImage(named: "download1")
     }
