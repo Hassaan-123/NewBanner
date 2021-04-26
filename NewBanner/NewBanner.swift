@@ -1,10 +1,3 @@
-//
-//  NewBanner.swift
-//  NewBanner
-//
-//  Created by cedcoss on 4/19/21.
-//
-
 import Foundation
 import UIKit
  
@@ -18,16 +11,19 @@ import UIKit
     var views : UIView!
     var contrl : UIViewController!
     
+    
+    
     public lazy var maincollection : UICollectionView =
         {
             let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal.self
-           
+            layout.scrollDirection =  .horizontal
+            
             let maincollection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
             maincollection.translatesAutoresizingMaskIntoConstraints=false
             maincollection.isMultipleTouchEnabled = true
             maincollection.allowsMultipleSelection = true
             maincollection.backgroundColor = .white
+            maincollection.tag = collectiontag
             maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
             return maincollection
         }()
@@ -41,45 +37,49 @@ import UIKit
     }
     var cellnumber = 0
     
-    @IBInspectable open var numberOfCell : Int   {
+    @IBInspectable open var collectiontag : Int{
+        set {maincollection.tag = newValue}
+        get { return 0 }
+    }
+    
+    
+    @IBInspectable open var NoCell : Int   {
         
         set{ cellnumber = newValue}
         get{ return  2 }
         
     }
     
-    @IBInspectable open var imagecolor : UIColor = .white
+    @IBInspectable open var collectionviewColor : UIColor = .white
     {
         didSet{
-            maincollection.backgroundColor = oldValue
+            maincollection.backgroundColor = collectionviewColor
     }}
     
-    @IBInspectable open var backgroundcolor : UIColor = .clear
+    @IBInspectable open var ViewColor : UIColor = .clear
     {
-        didSet{ self.backgroundcolor = oldValue}
-         
-        
+        didSet{ self.backgroundColor = ViewColor}
     }
     
-    @IBInspectable open var cornerradius : CGFloat = 0
+    @IBInspectable open var CornerRadius : CGFloat = 0
     {
         didSet
         {
-            maincollection.layer.cornerRadius = cornerradius
+            maincollection.layer.cornerRadius = CornerRadius
         }
     }
     
-    @IBInspectable open var border : CGFloat = 0
+    @IBInspectable open var BorderWidth : CGFloat = 0
     {
         didSet{
-            maincollection.layer.borderWidth = border
+            maincollection.layer.borderWidth = BorderWidth
         }
     }
     
-    @IBInspectable open var bordercolor : UIColor = .white
+    @IBInspectable open var BorderColor : UIColor = .white
         {
         didSet{
-            maincollection.layer.borderColor = bordercolor.cgColor
+            maincollection.layer.borderColor = BorderColor.cgColor
         }
         }
     
@@ -143,7 +143,7 @@ extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UIColle
     let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
         
         cell.myview = self
-        cell.Setimages(img: images[indexPath.row])
+        cell.Setimages(index:  indexPath.row)
         
     return cell
     

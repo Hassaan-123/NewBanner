@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios
   spec.ios.deployment_target = '12.0'
   spec.name         = "NewBanner"
-  spec.version      = "8.0.0"
+  spec.version      = "10.0.0"
   spec.summary      = "It gives you a Simple pod for testing image slider."
 
 
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "Hassaan-123" => "hassaanansari@magenative.com" }
 
 
-  spec.source       = { :git => "https://github.com/Hassaan-123/NewBanner.git", :tag => "8.0.0" }
+  spec.source       = { :git => "https://github.com/Hassaan-123/NewBanner.git", :tag => "10.0.0" }
   
  
   
