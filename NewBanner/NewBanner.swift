@@ -9,7 +9,7 @@ import Foundation
 import UIKit
  
 
-public class NewBanner: UIViewController 
+@IBDesignable open class NewBanner: UIView
 {
     
     
@@ -22,7 +22,6 @@ public class NewBanner: UIViewController
         {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal.self
-            
            
             let maincollection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
             maincollection.translatesAutoresizingMaskIntoConstraints=false
@@ -30,9 +29,6 @@ public class NewBanner: UIViewController
             maincollection.allowsMultipleSelection = true
             maincollection.backgroundColor = .white
             maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
-           
-           
-            
             return maincollection
         }()
     
@@ -43,8 +39,57 @@ public class NewBanner: UIViewController
     public func execute() {
         print("executed")
     }
+    var cellnumber = 0
     
-    public func ImageSlide(myview : UIView ,controlle:UIViewController )
+    @IBInspectable open var numberOfCell : Int = 1 {
+        
+        didSet{
+        cellnumber = oldValue
+        
+        }
+    }
+    
+    @IBInspectable open var imagecolor : UIColor = .white
+    {
+        didSet{
+            maincollection.backgroundColor = oldValue
+    }}
+    
+    @IBInspectable open var cornerradius : CGFloat = 0
+    {
+        didSet
+        {
+            maincollection.layer.cornerRadius = cornerradius
+        }
+    }
+    
+    @IBInspectable open var border : CGFloat = 0
+    {
+        didSet{
+            maincollection.layer.borderWidth = border
+        }
+    }
+    
+    @IBInspectable open var bordercolor : UIColor = .white
+        {
+        didSet{
+            maincollection.layer.borderColor = bordercolor.cgColor
+        }
+        }
+    
+    override init(frame: CGRect) {
+         super.init(frame: frame)
+        
+        singleimage(myview: self)
+     }
+     
+    required public init?(coder aDecoder: NSCoder) {
+         super.init(coder: aDecoder)
+         
+        singleimage(myview: self)
+     }
+    
+    public func ImageSlide(myview : UIView)
     {
          
         views = myview
@@ -53,8 +98,8 @@ public class NewBanner: UIViewController
         maincollection.leadingAnchor.constraint(equalTo: views.leadingAnchor).isActive=true
         maincollection.trailingAnchor.constraint(equalTo: views.trailingAnchor).isActive=true
         maincollection.bottomAnchor.constraint(equalTo: views.bottomAnchor).isActive=true
-        maincollection.delegate = (controlle as! UICollectionViewDelegate)
-        maincollection.dataSource = (controlle as! UICollectionViewDataSource)
+        maincollection.delegate = self
+        maincollection.dataSource = self
         
     }
     
@@ -77,7 +122,7 @@ public class NewBanner: UIViewController
 extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
                       numberOfItemsInSection section: Int) -> Int {
-    return images.count
+    return images.count + cellnumber
   }
   
     public func collectionView(_ collectionView: UICollectionView,

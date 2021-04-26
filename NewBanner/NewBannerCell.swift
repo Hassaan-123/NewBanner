@@ -9,6 +9,8 @@ import UIKit
 
 public class NewBannerCell: UICollectionViewCell {
     
+    
+    
     func Setimages(img : String)
     {
         print("inside cell for item at")
