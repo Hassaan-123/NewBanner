@@ -23,9 +23,8 @@ public class NewBannerCell: UICollectionViewCell {
     
     func Setimages(index : Int )
     {
-        print("inside cell for item at")
-        contentView.addSubview(img)
-         
+    
+        contentView.addSubview(img) 
         img.topAnchor.constraint(equalTo:  contentView.topAnchor).isActive=true
         img.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor).isActive=true
         img.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor).isActive=true
@@ -35,8 +34,7 @@ public class NewBannerCell: UICollectionViewCell {
         else
         {
         img.image = UIImage(named: images[index])
-        }
-        print("going out of cell for row at")
+        } 
         
     }
 }

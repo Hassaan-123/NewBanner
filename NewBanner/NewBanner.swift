@@ -139,13 +139,11 @@ extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UIColle
   
     public func collectionView(_ collectionView: UICollectionView,
                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("inside newbanner")
-    let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
-        
+   
+        let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
         cell.myview = self
         cell.Setimages(index:  indexPath.row)
-        
-    return cell
+        return cell
     
   }
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
