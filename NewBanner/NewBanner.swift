@@ -6,7 +6,7 @@ import UIKit
 {
     
     
-    var images = ["download1" ,"download2","download3","download4","download5"]
+    var images : [String]!
    
     var views : UIView!
     var contrl : UIViewController!
@@ -39,7 +39,10 @@ import UIKit
         print("executed")
     }
     var cellnumber = 0
-    
+    @IBInspectable open var arrimages : [String] = []
+    {didSet{
+        images = arrimages
+    }}
     @IBInspectable open var collectiontag : Int{
         set {maincollection.tag = newValue}
         get { return 0 }
@@ -157,9 +160,9 @@ extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UIColle
    
         let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
         cell.myview = self
+        cell.images = arrimages
         cell.Setimages(index:  indexPath.row)
-        print(maintype)
-           cell.showanimate(types: maintype)
+        cell.showanimate(types: maintype)
         if timer > 0.0
         {starttimer()}
         

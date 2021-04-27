@@ -10,7 +10,7 @@ import UIKit
 public class NewBannerCell: UICollectionViewCell {
     
     var myview : UIView!
-    var images = ["download1" ,"download2","download3","download4","download5"]
+    var images : [String]!
     
     
     public lazy var img : UIImageView =
@@ -46,7 +46,7 @@ public class NewBannerCell: UICollectionViewCell {
          }
      }
     func Setimages(index : Int )
-    { 
+   {
         contentView.addSubview(img)
         img.topAnchor.constraint(equalTo:  contentView.topAnchor).isActive=true
         img.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor).isActive=true
