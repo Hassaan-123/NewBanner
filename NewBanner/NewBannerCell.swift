@@ -11,6 +11,8 @@ public class NewBannerCell: UICollectionViewCell {
     
     var myview : UIView!
     var images = ["download1" ,"download2","download3","download4","download5"]
+    
+    
     public lazy var img : UIImageView =
         {
             
@@ -20,11 +22,32 @@ public class NewBannerCell: UICollectionViewCell {
             return img
         }()
     
-    
+    public func showanimate(types : AnimationOptions)
+     {
+        switch types {
+         case .curveEaseIn:
+            self .transform = CGAffineTransform(scaleX: 0, y: 0)
+             UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn , animations:  {
+                 self.transform = .identity
+             },  completion:nil)
+        case .curveLinear:
+        self .transform = CGAffineTransform(scaleX: 0, y: 0)
+         UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveLinear , animations:  {
+             self.transform = .identity
+         },  completion:nil)
+        case .transitionFlipFromBottom:
+        self .transform = CGAffineTransform(scaleX: 0, y: 0)
+         UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.transitionFlipFromBottom , animations:  {
+             self.transform = .identity
+         },  completion:nil)
+        
+         default:
+             break
+         }
+     }
     func Setimages(index : Int )
-    {
-    
-        contentView.addSubview(img) 
+    { 
+        contentView.addSubview(img)
         img.topAnchor.constraint(equalTo:  contentView.topAnchor).isActive=true
         img.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor).isActive=true
         img.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor).isActive=true
@@ -34,7 +57,6 @@ public class NewBannerCell: UICollectionViewCell {
         else
         {
         img.image = UIImage(named: images[index])
-        } 
-        
+        }
     }
 }

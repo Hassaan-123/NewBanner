@@ -10,8 +10,9 @@ import UIKit
    
     var views : UIView!
     var contrl : UIViewController!
-    
-    
+    var anim = AnimationOptions()
+    var maintype = AnimationOptions()
+    var maintimer = Double()
     
     public lazy var maincollection : UICollectionView =
         {
@@ -20,11 +21,13 @@ import UIKit
             
             let maincollection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
             maincollection.translatesAutoresizingMaskIntoConstraints=false
+            maincollection.indicatorStyle = .black
             maincollection.isMultipleTouchEnabled = true
             maincollection.allowsMultipleSelection = true
             maincollection.backgroundColor = .white
             maincollection.tag = collectiontag
             maincollection.register(NewBannerCell.self, forCellWithReuseIdentifier: "Collections")
+            
             return maincollection
         }()
     
@@ -41,7 +44,6 @@ import UIKit
         set {maincollection.tag = newValue}
         get { return 0 }
     }
-    
     
     @IBInspectable open var NoCell : Int   {
         
@@ -82,7 +84,17 @@ import UIKit
             maincollection.layer.borderColor = BorderColor.cgColor
         }
         }
-    
+    @IBInspectable open var type : AnimationOptions  = [.curveLinear]
+         {
+       didSet{
+            maintype = type
+            }
+    }
+    @IBInspectable open var timer : Double = 0.0
+    {
+        didSet{maintimer = timer }
+        
+    }
     override init(frame: CGRect) {
          super.init(frame: frame)
         
@@ -100,6 +112,12 @@ import UIKit
         let bundle = Bundle(for: NewBanner.self)
         bundle.loadNibNamed(String(describing: NewBanner.self), owner: self, options: nil)
     }
+    
+//    public var type : AnimationOptions = [.curveLinear]
+//     {
+//        didSet{showanimate()}
+//     }
+    
     public func ImageSlide(myview : UIView )
     {
          
@@ -126,10 +144,7 @@ import UIKit
         img.heightAnchor.constraint(equalToConstant: 100).isActive=true
         img.image = UIImage(named: "download1")
     }
-    
- 
-  
-    
+     
 }
 extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
@@ -143,10 +158,42 @@ extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UIColle
         let cell = maincollection.dequeueReusableCell(withReuseIdentifier: "Collections", for: indexPath) as! NewBannerCell
         cell.myview = self
         cell.Setimages(index:  indexPath.row)
+        print(maintype)
+           cell.showanimate(types: maintype)
+        starttimer()
         return cell
     
   }
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.frame.width, height: self.frame.height)
     }
+    func starttimer()
+    {
+        print(maintimer)
+        Timer.scheduledTimer(timeInterval: maintimer, target: self, selector: #selector(self.scrollAutomatically), userInfo: nil, repeats: true)
+    }
+    @objc func scrollAutomatically(_ timer1: Timer) {
+            
+        if let coll  = maincollection as UICollectionView?
+    {
+                for cell in coll.visibleCells {
+                    let indexPath: IndexPath? = coll.indexPath(for: cell)
+                    if ((indexPath?.row)!  < cellnumber - 1){
+                        let indexPath1: IndexPath?
+                        indexPath1 = IndexPath.init(row: (indexPath?.row)! + 1 , section: indexPath!.section)
+                        
+                        coll.scrollToItem(at: indexPath1!, at: .right, animated: true)
+                    }
+                    else{
+                        let indexPath1: IndexPath?
+                        indexPath1 = IndexPath.init(row:   indexPath!.row + 1 , section: indexPath!.section)
+                        coll.scrollToItem(at: indexPath1!, at: .left, animated: true)
+                    }
+                    
+                }
+            }
+            
+        }
+
+    
 }
