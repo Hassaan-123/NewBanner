@@ -160,7 +160,9 @@ extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UIColle
         cell.Setimages(index:  indexPath.row)
         print(maintype)
            cell.showanimate(types: maintype)
-        starttimer()
+        if timer > 0.0
+        {starttimer()}
+        
         return cell
     
   }
