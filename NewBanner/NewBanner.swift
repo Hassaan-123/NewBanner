@@ -11,7 +11,7 @@ import UIKit
     var views : UIView!
     var contrl : UIViewController!
     var anim = AnimationOptions()
-    var maintype = AnimationOptions()
+    var maintype : Animation!
     var maintimer = Double()
     
     public lazy var maincollection : UICollectionView =
@@ -87,11 +87,12 @@ import UIKit
             maincollection.layer.borderColor = BorderColor.cgColor
         }
         }
-    @IBInspectable open var type : AnimationOptions  = [.curveLinear]
+    public var type : Animation
          {
-       didSet{
-            maintype = type
+       set{
+            maintype = newValue
             }
+        get {return .None}
     }
     @IBInspectable open var timer : Double = 0.0
     {
@@ -116,14 +117,8 @@ import UIKit
         bundle.loadNibNamed(String(describing: NewBanner.self), owner: self, options: nil)
     }
     
-//    public var type : AnimationOptions = [.curveLinear]
-//     {
-//        didSet{showanimate()}
-//     }
-    
     public func ImageSlide(myview : UIView )
     {
-         
         views = myview
         self.addSubview(maincollection)
         maincollection.topAnchor.constraint(equalTo: self.topAnchor).isActive=true
@@ -201,4 +196,21 @@ extension NewBanner: UICollectionViewDataSource,UICollectionViewDelegate,UIColle
         }
 
     
+}
+
+public enum Animation {
+     case Spring
+     case FadeUp
+     case BounceUp
+     case Disappear
+     case None
+     case EaseIn
+     case curveLinear
+     case FadeIn
+     case FadeOut
+     case FlipFromTop
+     case FlipFromLeft
+     case FlipFromBottom
+     case FlipFromRight
+     case Rotate
 }
